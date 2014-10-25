@@ -79,8 +79,8 @@ public class StackTapPointerEventListener implements PointerEventListener {
                     synchronized(this) {
                         if ((motionEvent.getEventTime() - motionEvent.getDownTime())
                                 < TAP_TIMEOUT_MSEC
-                            && Math.abs(x - mDownX) < mMotionSlop
-                            && Math.abs(y - mDownY) < mMotionSlop
+                                && Math.abs(x - mDownX) < mMotionSlop
+                                && Math.abs(y - mDownY) < mMotionSlop
                                 && !mTouchExcludeRegion.contains(x, y)) {
                             mService.mH.obtainMessage(H.TAP_OUTSIDE_STACK, x, y,
                                     mDisplayContent).sendToTarget();

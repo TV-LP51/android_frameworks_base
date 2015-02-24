@@ -369,6 +369,10 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
     private int mStatusBarHeaderHeight;
 
     private boolean mShowCarrierInPanel = false;
+    // Validus logo
+    private boolean mValidusLogo;
+    private ImageView validusLogo;
+
 
     // position
     int[] mPositionTmp = new int[2];
@@ -463,7 +467,9 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
             resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.NAVBAR_LEFT_IN_LANDSCAPE), false, this, UserHandle.USER_ALL);
             resolver.registerContentObserver(Settings.Secure.getUriFor(
-                    Settings.Secure.RECENTS_LONG_PRESS_ACTIVITY), false, this);
+            resolver.registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.STATUS_BAR_VALIDUS_LOGO),
+                    false, this, UserHandle.USER_ALL);
             update();
         }
 
@@ -485,6 +491,10 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
             mBrightnessControl = Settings.System.getIntForUser(
                     resolver, Settings.System.STATUS_BAR_BRIGHTNESS_CONTROL, 0,
                     UserHandle.USER_CURRENT) == 1;
+
+            mValidusLogo = Settings.System.getIntForUser(resolver,
+                    Settings.System.STATUS_BAR_VALIDUS_LOGO, 0, mCurrentUserId) == 1;
+            showValidusLogo(mValidusLogo);
 
             final int oldClockLocation = mClockLocation;
             final View oldClockView = mClockView;
@@ -3738,6 +3748,15 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
                 return true;
             }
         }, afterKeyguardGone);
+    }
+
+    public void showValidusLogo(boolean show) {
+        if (mStatusBarView == null) return;
+        ContentResolver resolver = mContext.getContentResolver();
+        validusLogo = (ImageView) mStatusBarView.findViewById(R.id.validus_logo);
+        if (validusLogo != null) {
+            validusLogo.setVisibility(show ? (mValidusLogo ? View.VISIBLE : View.GONE) : View.GONE);
+        }
     }
 
     private BroadcastReceiver mBroadcastReceiver = new BroadcastReceiver() {

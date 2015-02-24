@@ -2190,6 +2190,12 @@ public final class Settings {
          */
         @Deprecated
         public static final String STATUS_BAR_QUICK_QS_PULLDOWN = System.QS_QUICK_PULLDOWN;
+         * Statusbar Validus logo
+         * @hide
+         */
+        public static final String STATUS_BAR_VALIDUS_LOGO = "status_bar_validus_logo";
+
+        /**
 
         /**
          * Quick Settings Quick Pulldown

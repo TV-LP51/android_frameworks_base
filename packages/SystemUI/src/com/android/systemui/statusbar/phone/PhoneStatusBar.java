@@ -4046,6 +4046,11 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
         if (updateStatusBar) {
             mContext.recreateTheme();
             recreateStatusBar();
+            // detect Validus logo state when theme change.
+            mValidusLogo = Settings.System.getInt(
+                    resolver, Settings.System.STATUS_BAR_VALIDUS_LOGO, 0) == 1;
+            showValidusLogo(mValidusLogo);
+
         } else {
             loadDimens();
         }

@@ -3904,6 +3904,9 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
         if (mMSimNetworkController != null) {
             mMSimNetworkController.setUserId(mCurrentUserId);
         }
+        if (mMSimNetworkController != null) {
+            mMSimNetworkController.setUserId(mCurrentUserId);
+        }
         if (mBatteryController != null) {
             mBatteryController.setUserId(mCurrentUserId);
         }

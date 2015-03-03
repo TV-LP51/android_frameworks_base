@@ -20,6 +20,7 @@ package com.android.systemui.statusbar.policy;
 
 import java.io.FileDescriptor;
 import java.io.PrintWriter;
+import android.app.ActivityManager;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -278,7 +279,6 @@ public class MSimNetworkControllerImpl extends NetworkControllerImpl {
         }
         return phoneId;
     }
-
 
     private int getPhoneId(int subId) {
         int phoneId;

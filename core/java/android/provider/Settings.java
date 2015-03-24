@@ -3716,11 +3716,23 @@ public final class Settings {
         public static final String ALLOW_LIGHTS = "allow_lights";
 
         /**
+         * show clear all recents button
+         *  @hide
+         */
+        public static final String SHOW_CLEAR_ALL_RECENTS = "show_clear_all_recents";
+
+        /**
          * Volume key controls ringtone or media sound stream
          * @hide
          */
         public static final String VOLUME_KEYS_CONTROL_RING_STREAM =
                 "volume_keys_control_ring_stream";
+
+        /**
+         * Whether to dismiss all recents tasks
+         * @hide
+         */
+        public static final String RECENTS_CLEAR_ALL_DISMISS_ALL = "recents_clear_all_dismiss_all";
 
         /**
          * Alternative recent apps integration using OmniSwitch

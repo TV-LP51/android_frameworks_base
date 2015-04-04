@@ -67,7 +67,23 @@
     <java-symbol type="array" name="shutdown_reboot_options" />
     <java-symbol type="array" name="shutdown_reboot_actions" />
 
-    <java-symbol type="drawable" name="ic_lock_power_reboot" />
+    <!-- java-symbol type="drawable" name="ic_lock_power_reboot" / -->
+    <!-- Themes and styles -->
+    <java-symbol type="style" name="Theme.Material.Dialog.Validus" />
+    <java-symbol type="style" name="Theme.Material.Dialog.Alert.Validus" />
+    <java-symbol type="style" name="TextAppearance.Material.Large.Validus" />
+    <java-symbol type="style" name="TextAppearance.Material.Small.Validus" />
+    <java-symbol type="drawable" name="item_background_borderless_material_dk" />
+    <java-symbol type="drawable" name="btn_borderless_material_dk" />
+    <java-symbol type="drawable" name="validus_bg_blue_grey" />
+    <java-symbol type="color" name="validus_blue_grey" />
+    <java-symbol type="drawable" name="ic_lock_reboot" />
+    <java-symbol type="color" name="global_actions_icon_color_normal" />
+    <java-symbol type="color" name="global_actions_icon_color_selected" />
+    <java-symbol type="color" name="global_actions_icon_color_enabled" />
+    <java-symbol type="id" name="option1_icon" />
+    <java-symbol type="id" name="option2_icon" />
+    <java-symbol type="id" name="option3_icon" />
 
     <java-symbol type="integer" name="config_deviceHardwareKeys" />
     <java-symbol type="integer" name="config_deviceHardwareWakeKeys" />

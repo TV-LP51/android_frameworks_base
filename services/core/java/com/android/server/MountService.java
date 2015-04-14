@@ -1375,6 +1375,23 @@ class MountService extends IMountService.Stub
         Resources resources = mContext.getResources();
 
         int id = com.android.internal.R.xml.storage_list;
+
+        /*
+         * If ro.storage_list.override is set use it to override the
+         * default. This is used for devices with different storage
+         * layouts, e.g. with either emulated or non-emulated sdcard0.
+         */
+        String storageListOverride = SystemProperties.get("ro.storage_list.override");
+        if (!storageListOverride.isEmpty()) {
+            int tmpId = resources.getIdentifier(storageListOverride, "xml", "android");
+            if(tmpId > 0) {
+                Slog.i(TAG, "readStorageListLocked: using storage list \"" + storageListOverride + "\"");
+                id = tmpId;
+            } else {
+                Slog.e(TAG, "readStorageListLocked: could not retrieve storage list \""
+                       + storageListOverride + "\", using default instead");
+            }
+        }
         XmlResourceParser parser = resources.getXml(id);
         AttributeSet attrs = Xml.asAttributeSet(parser);
 

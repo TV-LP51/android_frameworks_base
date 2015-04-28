@@ -209,11 +209,6 @@ public class NetworkControllerImpl extends BroadcastReceiver
 
     private final AccessPointControllerImpl mAccessPoints;
     private final MobileDataController mMobileDataController;
-
-    private final class SettingsObserver extends ContentObserver {
-        SettingsObserver(Handler handler) {
-            super(handler);
-        }	
 	
     /**
      * Construct this controller object and register for updates.
@@ -221,10 +216,6 @@ public class NetworkControllerImpl extends BroadcastReceiver
     public NetworkControllerImpl(Context context) {
         mContext = context;
         final Resources res = context.getResources();
-
-        // Register settings observer and set initial preferences
-        SettingsObserver settingsObserver = new SettingsObserver(new Handler());
-        settingsObserver.observe();
 		
         TelephonyIcons.initAll(context);
         ConnectivityManager cm = (ConnectivityManager)mContext.getSystemService(

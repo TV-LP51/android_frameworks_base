@@ -34,6 +34,7 @@ import android.net.wimax.WimaxManagerConstants;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.UserHandle;
 import android.os.Message;
 import android.os.Messenger;
 import android.provider.Settings;
@@ -209,6 +210,11 @@ public class NetworkControllerImpl extends BroadcastReceiver
     private final AccessPointControllerImpl mAccessPoints;
     private final MobileDataController mMobileDataController;
 
+    private final class SettingsObserver extends ContentObserver {
+        SettingsObserver(Handler handler) {
+            super(handler);
+        }	
+	
     /**
      * Construct this controller object and register for updates.
      */
@@ -216,6 +222,10 @@ public class NetworkControllerImpl extends BroadcastReceiver
         mContext = context;
         final Resources res = context.getResources();
 
+        // Register settings observer and set initial preferences
+        SettingsObserver settingsObserver = new SettingsObserver(new Handler());
+        settingsObserver.observe();
+		
         TelephonyIcons.initAll(context);
         ConnectivityManager cm = (ConnectivityManager)mContext.getSystemService(
                 Context.CONNECTIVITY_SERVICE);

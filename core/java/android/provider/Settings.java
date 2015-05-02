@@ -3144,6 +3144,8 @@ public final class Settings {
 	 * @hide
 	 */
         public static final String WHITELIST_APP_CIRCLE_BAR = "whitelist_app_circle_bar";
+
+	/**
          * Whether to show the weather info on the lock screen
          * @hide
          */
@@ -3155,7 +3157,7 @@ public final class Settings {
          */
         public static final String LOCK_SCREEN_SHOW_WEATHER_LOCATION = "lock_screen_show_weather_location";
 		
-		/**
+	/**
          * Whether to show the weather update timestamp on the lock screen
          * @hide
          */

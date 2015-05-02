@@ -418,7 +418,6 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
 
     // for disabling the status bar
     int mDisabled = 0;
-    private boolean mRecreating = false;
 
     // tracking calls to View.setSystemUiVisibility()
     int mSystemUiVisibility = View.SYSTEM_UI_FLAG_VISIBLE;

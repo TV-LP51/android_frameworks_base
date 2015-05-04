@@ -244,7 +244,6 @@
     <java-symbol type="dimen" name="global_actions_avatar_size" />
     <java-symbol type="drawable" name="ic_lock_screenrecord" />
     <java-symbol type="string" name="global_action_screenrecord" />
-
     <!-- Theme reset notification -->
     <java-symbol type="string" name="theme_reset_notification_title" />
     <java-symbol type="string" name="theme_reset_notification_body" />
@@ -314,6 +313,10 @@
     <java-symbol type="string" name="usb_ext_media_unmountable_notification_message" />
     <java-symbol type="string" name="usb_ext_media_unmountable_notification_title" />
 
+    <!-- Automatic display brightness settings -->
+    <java-symbol type="integer" name="config_brighteningLightDebounce" />
+    <java-symbol type="integer" name="config_darkeningLightDebounce" />
+
     <!-- LiveDisplay -->
     <java-symbol type="string" name="live_display_title" />
     <java-symbol type="string" name="live_display_hint" />
@@ -338,6 +341,11 @@
     <java-symbol type="bool" name="config_advancedSettingsMode" />
 
     <java-symbol type="string" name="lock_to_app_toast_no_navbar" />
+
+    <!-- KillSwitch -->
+    <java-symbol type="array" name="config_packagesAllowedAccessToKillSwitch" />
+    <java-symbol type="string" name="config_killSwitchLib" />
+    <java-symbol type="string" name="config_killSwitchClass" />
 
     <!-- Flashlight notification -->
     <java-symbol type="string" name="quick_settings_tile_flashlight_not_title" />

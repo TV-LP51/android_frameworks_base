@@ -82,6 +82,13 @@
                     android:singleLine="true"
                     android:ellipsize="end"/>
 
+                <com.android.systemui.statusbar.policy.NetworkTraffic
+                   android:id="@+id/networkTraffic"
+                   android:layout_width="wrap_content"
+                   android:layout_height="match_parent"
+                   android:singleLine="false"
+                   android:gravity="left|center_vertical"/>
+
                 <TextView
                     android:id="@+id/left_clock"
                     android:textAppearance="@style/TextAppearance.StatusBar.Clock"
@@ -123,13 +130,6 @@
                 android:layout_marginStart="@dimen/header_battery_margin_keyguard"
                 android:textColor="#ffffff"
                 android:textSize="@dimen/battery_level_text_size" />
-
-            <com.android.systemui.statusbar.policy.NetworkTraffic
-                android:id="@+id/networkTraffic"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:singleLine="false"
-                android:gravity="right|center_vertical"/>
 
            <TextView
                 android:id="@+id/clock"

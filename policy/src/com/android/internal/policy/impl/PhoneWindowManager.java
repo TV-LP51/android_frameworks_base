@@ -2054,29 +2054,6 @@ public class PhoneWindowManager implements WindowManagerPolicy {
             mNavigationBarLeftInLandscape = Settings.System.getIntForUser(resolver,
                     Settings.System.NAVBAR_LEFT_IN_LANDSCAPE, 0, UserHandle.USER_CURRENT) == 1;
 
-            updateKeyAssignments();
-
-            // Configure rotation lock.
-            int userRotation = Settings.System.getIntForUser(resolver,
-                    Settings.System.USER_ROTATION, Surface.ROTATION_0,
-                    UserHandle.USER_CURRENT);
-            if (mUserRotation != userRotation) {
-                mUserRotation = userRotation;
-                updateRotation = true;
-            }
-            int userRotationMode = Settings.System.getIntForUser(resolver,
-                    Settings.System.ACCELEROMETER_ROTATION, 0, UserHandle.USER_CURRENT) != 0 ?
-                            WindowManagerPolicy.USER_ROTATION_FREE :
-                                    WindowManagerPolicy.USER_ROTATION_LOCKED;
-            if (mUserRotationMode != userRotationMode) {
-                mUserRotationMode = userRotationMode;
-                updateRotation = true;
-                updateOrientationListenerLp();
-            }
-
-            mUserRotationAngles = Settings.System.getInt(resolver,
-                    Settings.System.ACCELEROMETER_ROTATION_ANGLES, -1);
-
             // Navbar dimensions
             mNavigationBarHeight =
                     Settings.System.getIntForUser(mContext.getContentResolver(),
@@ -2102,30 +2079,42 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                         AicpUtils.dpToPx(mContext, mNavigationBarWidth);
             }
 
-            if (!mHasNavigationBar) {
-                // Set the navigation bar's dimensions to 0
-                mNavigationBarWidthForRotation[mPortraitRotation]
-                        = mNavigationBarWidthForRotation[mUpsideDownRotation]
-                        = mNavigationBarWidthForRotation[mLandscapeRotation]
-                        = mNavigationBarWidthForRotation[mSeascapeRotation]
-                        = mNavigationBarHeightForRotation[mPortraitRotation]
-                        = mNavigationBarHeightForRotation[mUpsideDownRotation]
-                        = mNavigationBarHeightForRotation[mLandscapeRotation]
-                        = mNavigationBarHeightForRotation[mSeascapeRotation] = 0;
-            } else {
-                // Height of the navigation bar when presented horizontally at bottom *******
-                mNavigationBarHeightForRotation[mPortraitRotation] =
-                mNavigationBarHeightForRotation[mUpsideDownRotation] =
-                mNavigationBarHeightForRotation[mLandscapeRotation] =
-                mNavigationBarHeightForRotation[mSeascapeRotation] = mNavigationBarHeight;
+            // Height of the navigation bar when presented horizontally at bottom *******
+            mNavigationBarHeightForRotation[mPortraitRotation] =
+            mNavigationBarHeightForRotation[mUpsideDownRotation] =
+            mNavigationBarHeightForRotation[mLandscapeRotation] =
+            mNavigationBarHeightForRotation[mSeascapeRotation] = mNavigationBarHeight;
 
-                // Width of the navigation bar when presented vertically along one side
-                mNavigationBarWidthForRotation[mPortraitRotation] =
-                mNavigationBarWidthForRotation[mUpsideDownRotation] =
-                mNavigationBarWidthForRotation[mLandscapeRotation] =
-                mNavigationBarWidthForRotation[mSeascapeRotation] = mNavigationBarWidth;
+            // Width of the navigation bar when presented vertically along one side
+            mNavigationBarWidthForRotation[mPortraitRotation] =
+            mNavigationBarWidthForRotation[mUpsideDownRotation] =
+            mNavigationBarWidthForRotation[mLandscapeRotation] =
+            mNavigationBarWidthForRotation[mSeascapeRotation] = mNavigationBarWidth;
+
+            updateKeyAssignments();
+
+            // Configure rotation lock.
+            int userRotation = Settings.System.getIntForUser(resolver,
+                    Settings.System.USER_ROTATION, Surface.ROTATION_0,
+                    UserHandle.USER_CURRENT);
+            if (mUserRotation != userRotation) {
+                mUserRotation = userRotation;
+                updateRotation = true;
+            }
+            int userRotationMode = Settings.System.getIntForUser(resolver,
+                    Settings.System.ACCELEROMETER_ROTATION, 0, UserHandle.USER_CURRENT) != 0 ?
+                            WindowManagerPolicy.USER_ROTATION_FREE :
+                                    WindowManagerPolicy.USER_ROTATION_LOCKED;
+            if (mUserRotationMode != userRotationMode) {
+                mUserRotationMode = userRotationMode;
+                updateRotation = true;
+                updateOrientationListenerLp();
             }
 
+            mUserRotationAngles = Settings.System.getIntForUser(resolver,
+                    Settings.System.ACCELEROMETER_ROTATION_ANGLES, -1,
+                    UserHandle.USER_CURRENT);
+			
             if (mSystemReady) {
                 int pointerLocation = Settings.System.getIntForUser(resolver,
                         Settings.System.POINTER_LOCATION, 0, UserHandle.USER_CURRENT);

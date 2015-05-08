@@ -462,12 +462,6 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
 
             ContentResolver resolver = mContext.getContentResolver();
             resolver.registerContentObserver(Settings.System.getUriFor(
-                    Settings.System.LOCK_SCREEN_TEXT_COLOR),
-                    false, this, UserHandle.USER_ALL);
-            resolver.registerContentObserver(Settings.System.getUriFor(
-                    Settings.System.LOCK_SCREEN_ICON_COLOR),
-                    false, this, UserHandle.USER_ALL);			
-            resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.STATUS_BAR_BRIGHTNESS_CONTROL), false, this,
                     UserHandle.USER_ALL);
             resolver.registerContentObserver(Settings.System.getUriFor(
@@ -656,17 +650,6 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
             }
         }
     };
-
-	@Override
-        public void onChange(boolean selfChange, Uri uri) {
-            if (uri.equals(Settings.System.getUriFor(
-                    Settings.System.LOCK_SCREEN_TEXT_COLOR))
-                || uri.equals(Settings.System.getUriFor(
-                    Settings.System.LOCK_SCREEN_ICON_COLOR))) {
-                setKeyguardTextAndIconColors();
-            }
-            update();
-        }
 
     final private ContentObserver mHeadsUpObserver = new ContentObserver(mHandler) {
         @Override
@@ -1360,7 +1343,6 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
                 new Intent(pm.isScreenOn() ? Intent.ACTION_SCREEN_ON : Intent.ACTION_SCREEN_OFF));
 
         startGlyphRasterizeHack();
-        setKeyguardTextAndIconColors();
         return mStatusBarView;
     }
 
@@ -2204,22 +2186,6 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
 
         updateCarrierLabelVisibility(false);
     }
-	
-    public void setKeyguardTextAndIconColors() {
-        int textColor =
-                Settings.System.getInt(mContext.getContentResolver(),
-                Settings.System.LOCK_SCREEN_TEXT_COLOR, 0xffffffff);
-        int iconColor =
-                Settings.System.getInt(mContext.getContentResolver(),
-                Settings.System.LOCK_SCREEN_ICON_COLOR, 0xffffffff);
-        if (mKeyguardStatusBar != null) {
-            mKeyguardStatusBar.updateCarrierLabelColor(textColor);
-        }
-        if (mKeyguardBottomArea != null) {
-            mKeyguardBottomArea.updateTextColor(textColor);
-            mKeyguardBottomArea.updateIconColor(iconColor);
-        }
-   }
 
     public void showClock(boolean show) {
         mClockView.setVisibility(show ? View.VISIBLE : View.GONE);

@@ -525,6 +525,7 @@ public class KeyguardBottomAreaView extends FrameLayout implements View.OnClickL
             }
             mLockIcon.setImageDrawable(icon);
         }
+
         boolean trustManaged = mUnlockMethodCache.isTrustManaged();
         mTrustDrawable.setTrustManaged(trustManaged);
         updateLockIconClickability();

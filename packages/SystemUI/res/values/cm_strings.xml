@@ -288,4 +288,15 @@
 
     <!-- Zen mode: No interruptions title, with a warning about alarms. [CHAR LIMIT=60] -->
     <string name="zen_silent_with_warning">No interruptions, except alarms.</string>
+
+   <!-- PA Pie controls -->
+    <string name="pie_date_format">ccc, dd MMM yyyy</string>
+    <string name="pie_hour_format_12">hh:mm</string>
+    <string name="pie_hour_format_24">HH:mm</string>
+    <string name="pie_am_pm">a</string>
+
+    <!-- Kill app toast -->
+    <string name="app_killed_message">App Killed</string>
+
+
 </resources>

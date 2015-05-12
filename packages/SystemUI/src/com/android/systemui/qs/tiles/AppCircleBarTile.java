@@ -86,7 +86,7 @@ public class AppCircleBarTile extends QSTile<QSTile.BooleanState> {
         state.icon = ResourceIcon.get(R.drawable.ic_qs_appcirclebar_on);
         state.label = mContext.getString(R.string.quick_settings_appcirclebar_on);
 	} else {
-        state.iconId = R.drawable.ic_qs_appcirclebar_off;
+        state.icon = ResourceIcon.get(R.drawable.ic_qs_appcirclebar_off);
 	state.label = mContext.getString(R.string.quick_settings_appcirclebar_off);
 	    }
 	}

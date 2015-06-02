@@ -18,12 +18,12 @@
     <style name="Theme.Material.Dialog.Validus" parent="Theme.Material.BaseDialog">
         <item name="colorBackground">@drawable/validus_bg_blue_grey</item>
         <item name="windowBackground">@drawable/dialog_background_material</item>
-        <item name="colorControlActivated">@color/accent_material_light</item>
+        <item name="colorControlActivated">#A6000E</item>
     </style>
 
     <style name="Theme.Material.Dialog.Alert.Validus" parent="Theme.Material.Dialog.BaseAlert">
         <item name="colorBackground">@drawable/validus_bg_blue_grey</item>
-        <item name="colorAccent">@color/accent_material_light</item>
+        <item name="colorAccent">#A6000E</item>
     </style>
 
 </resources>

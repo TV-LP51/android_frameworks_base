@@ -26,11 +26,11 @@
     <color name="primary_dark_material_dark">#ff000000</color>
     <color name="primary_dark_material_light">#ff757575</color>
 
-    <color name="ripple_material_dark">#4dffffff</color>
-    <color name="ripple_material_light">#1f000000</color>
+    <color name="ripple_material_dark">#A6000E</color>
+    <color name="ripple_material_light">#A6000E</color>
 
-    <color name="accent_material_light">@color/material_deep_teal_500</color>
-    <color name="accent_material_dark">@color/material_deep_teal_200</color>
+    <color name="accent_material_light">#A6000E</color>
+    <color name="accent_material_dark">#A6000E</color>
 
     <color name="button_material_dark">#ff5a595b</color>
     <color name="button_material_light">#ffd6d7d7</color>
@@ -60,10 +60,10 @@
     <!-- TODO: This is 40% alpha on the default accent color. -->
     <color name="highlighted_text_material_dark">#6680cbc4</color>
     <!-- TODO: This is 40% alpha on the default accent color. -->
-    <color name="highlighted_text_material_light">#66009688</color>
+    <color name="highlighted_text_material_light">#A6000E</color>
 
-    <color name="link_text_material_dark">@color/material_deep_teal_200</color>
-    <color name="link_text_material_light">@color/material_deep_teal_500</color>
+    <color name="link_text_material_dark">#A6000E</color>
+    <color name="link_text_material_light">#A6000E</color>
 
     <!-- Text & foreground colors -->
     <eat-comment />
@@ -81,7 +81,7 @@
     <eat-comment />
 
     <color name="material_deep_teal_200">#ff80cbc4</color>
-    <color name="material_deep_teal_500">#ff009688</color>
+    <color name="material_deep_teal_500">#A6000E</color>
 
     <color name="material_blue_grey_800">#ff37474f</color>
     <color name="material_blue_grey_900">#ff263238</color>

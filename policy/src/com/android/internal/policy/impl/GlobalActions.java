@@ -1241,17 +1241,12 @@ class GlobalActions implements DialogInterface.OnDismissListener, DialogInterfac
 
             for (int i = 0; i < ITEM_IDS.length; i++) {
                 View itemView = v.findViewById(ITEM_IDS[i]);
-                View iv = v.findViewById(IMAGE_VIEW_IDS[i]);
-                iv.setSelected(selectedIndex == i);
-                if (selectedIndex == i) {
-                    ((ImageView)iv).setColorFilter(context.getResources().getColor(
-                            R.color.global_actions_icon_color_selected),
-                            Mode.MULTIPLY);
-                } else {
-                    ((ImageView)iv).setColorFilter(context.getResources().getColor(
-                            R.color.global_actions_icon_color_normal),
-                            Mode.MULTIPLY);
+                if (!mHasVibrator && i == 2) {
+                    itemView.setVisibility(View.GONE);
+                    continue;
                 }
+                itemView.setSelected(selectedIndex == i);
+
                 // Set up click handler
                 itemView.setTag(i);
                 itemView.setOnClickListener(this);

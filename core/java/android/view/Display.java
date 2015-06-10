@@ -681,7 +681,7 @@ public final class Display {
         synchronized (this) {
             updateDisplayInfoLocked();
             mDisplayInfo.getAppMetrics(outMetrics, mDisplayAdjustments);
-
+            outMetrics.densityDpi = DisplayMetrics.DENSITY_DEVICE_DEFAULT;
             final int densityDpiRo = SystemProperties.getInt(PROP_DENSITY_DPI_OVERRIDE_RO, 0);
             final int densityDpi = SystemProperties.getInt(PROP_DENSITY_DPI_OVERRIDE, densityDpiRo);
             if (densityDpi != 0) {

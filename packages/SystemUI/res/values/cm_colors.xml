@@ -66,4 +66,10 @@
     <color name="gesture_overlay_background_fill_color">#80000000</color>
     <color name="gesture_color">@android:color/holo_blue_light</color>
 	
+    <!-- Expanded Status Bar Alarm Status Text Color -->
+    <color name="status_bar_alarm_status_text_color">#64ffffff</color>
+
+    <!-- Expanded Status Bar Battery Level Text Color -->
+    <color name="status_bar_battery_level_text_color">#ffffff</color>
+
 </resources>

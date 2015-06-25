@@ -614,7 +614,6 @@ public class NetworkControllerImpl extends BroadcastReceiver
             updateWimaxState(intent);
             refreshViews();
         }
-        recalculateEmergency();
     }
 
 

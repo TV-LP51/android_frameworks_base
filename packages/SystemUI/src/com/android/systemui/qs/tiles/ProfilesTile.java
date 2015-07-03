@@ -16,6 +16,8 @@
 
 package com.android.systemui.qs.tiles;
 
+import android.app.Profile;
+import android.app.ProfileManager;
 import android.content.Context;
 import android.content.Intent;
 import android.database.ContentObserver;
@@ -35,9 +37,6 @@ import com.android.systemui.qs.QSDetailItemsList;
 import com.android.systemui.qs.QSTile;
 import com.android.systemui.statusbar.policy.KeyguardMonitor;
 
-import cyanogenmod.app.Profile;
-import cyanogenmod.app.ProfileManager;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -56,7 +55,7 @@ public class ProfilesTile extends QSTile<QSTile.State> implements KeyguardMonito
 
     public ProfilesTile(Host host) {
         super(host);
-        mProfileManager = ProfileManager.getInstance(mContext);
+        mProfileManager = (ProfileManager) mContext.getSystemService(Context.PROFILE_SERVICE);
         mObserver = new ProfilesObserver(mHandler);
         mKeyguardMonitor = host.getKeyguardMonitor();
         mKeyguardMonitor.addCallback(this);

@@ -26,9 +26,8 @@ public interface NetworkController {
     void addNetworkSignalChangedCallback(NetworkSignalChangedCallback cb);
     void removeNetworkSignalChangedCallback(NetworkSignalChangedCallback cb);
     void setWifiEnabled(boolean enabled);
-    void onUserSwitched(int newUserId);
     AccessPointController getAccessPointController();
-    MobileDataController getMobileDataController();
+    void onUserSwitched(int newUserId);
 
     public interface NetworkSignalChangedCallback {
         void onWifiSignalChanged(boolean enabled, boolean connected, int wifiSignalIconId,
@@ -37,7 +36,7 @@ public interface NetworkController {
         void onMobileDataSignalChanged(boolean enabled, int mobileSignalIconId,
                 String mobileSignalContentDescriptionId, int dataTypeIconId,
                 boolean activityIn, boolean activityOut,
-                String dataTypeContentDescriptionId, String description,
+                String dataTypeContentDescriptionId, String description, boolean noSim,
                 boolean isDataTypeIconWide);
         void onNoSimVisibleChanged(boolean visible);
         void onAirplaneModeChanged(boolean enabled);
@@ -57,7 +56,7 @@ public interface NetworkController {
 
         public interface AccessPointCallback {
             void onAccessPointsChanged(List<AccessPoint> accessPoints);
-            void onSettingsActivityTriggered(Intent settingsIntent);
+            void onSettingsActivityTriggered(Intent intent);
         }
 
         public static class AccessPoint {
@@ -73,21 +72,31 @@ public interface NetworkController {
         }
     }
 
-    /**
-     * Tracks mobile data support and usage.
-     */
-    public interface MobileDataController {
-        boolean isMobileDataSupported();
-        boolean isMobileDataEnabled();
-        void setMobileDataEnabled(boolean enabled);
-        DataUsageInfo getDataUsageInfo();
 
-        public static class DataUsageInfo {
-            public String carrier;
-            public String period;
-            public long limitLevel;
-            public long warningLevel;
-            public long usageLevel;
-        }
+    boolean isMobileDataSupported();
+    boolean isMobileDataEnabled();
+    void setMobileDataEnabled(boolean enabled);
+    DataUsageInfo getDataUsageInfo();
+
+    public interface AccessPointCallback {
+        void onAccessPointsChanged(List<AccessPoint> accessPoints);
+    }
+
+    public static class AccessPoint {
+        public static final int NO_NETWORK = -1;  // see WifiManager
+
+        public int networkId;
+        public int iconId;
+        public String ssid;
+        public boolean isConnected;
+        public int level;  // 0 - 5
+    }
+
+    public static class DataUsageInfo {
+        public String carrier;
+        public String period;
+        public long limitLevel;
+        public long warningLevel;
+        public long usageLevel;
     }
 }

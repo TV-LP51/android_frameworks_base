@@ -139,14 +139,6 @@ public class Action {
                 } catch (RemoteException e) {
                 }
                 return;
-            } else if (action.equals(ActionConstants.ACTION_POWER_MENU)) {
-                try {
-                    //IWindowManager windowManagerService = IWindowManager.Stub.asInterface(
-                    //ServiceManager.getService(Context.WINDOW_SERVICE));
-                    windowManagerService.toggleGlobalMenu();
-                } catch (RemoteException e) {
-                }
-                return;
             } else if (action.equals(ActionConstants.ACTION_MENU)
                     || action.equals(ActionConstants.ACTION_MENU_BIG)) {
                 triggerVirtualKeypress(KeyEvent.KEYCODE_MENU, isLongpress);

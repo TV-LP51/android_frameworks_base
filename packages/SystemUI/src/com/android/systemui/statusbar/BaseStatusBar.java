@@ -702,6 +702,29 @@ public abstract class BaseStatusBar extends SystemUI implements
         updateCurrentProfilesCache();
     }
 
+    private void initPieController() {
+        if (mEdgeGestureManager == null) {
+            mEdgeGestureManager = EdgeGestureManager.getInstance();
+        }
+        if (mNavigationBarOverlay == null) {
+            mNavigationBarOverlay = new NavigationBarOverlay();
+        }
+        if (mPieController == null) {
+            mPieController = new PieController(
+                    mContext, this, mEdgeGestureManager, mNavigationBarOverlay);
+            addNavigationBarCallback(mPieController);
+        }
+    }
+
+    protected void attachPieContainer(boolean enabled) {
+        initPieController();
+        if (enabled) {
+            mPieController.attachContainer();
+        } else {
+            mPieController.detachContainer(false);
+        }
+    }
+
     public void setOverwriteImeIsActive(boolean enabled) {
         if (mEdgeGestureManager != null) {
             mEdgeGestureManager.setOverwriteImeIsActive(enabled);
@@ -752,25 +775,6 @@ public abstract class BaseStatusBar extends SystemUI implements
                             setupIntent);
 
             mNoMan.notify(HIDDEN_NOTIFICATION_ID, note.build());
-        }
-    }
-
-    private void initPieController() {
-        if (mNavigationBarOverlay == null) {
-            mNavigationBarOverlay = new NavigationBarOverlay();
-        }
-        if (mPieController == null) {
-            mPieController = new PieController(mContext, this, mNavigationBarOverlay);
-            addNavigationBarCallback(mPieController);
-        }
-    }
-
-    protected void attachPieContainer(boolean enabled) {
-        initPieController();
-        if (enabled) {
-            mPieController.attachContainer();
-        } else {
-            mPieController.detachContainer(false);
         }
     }
 

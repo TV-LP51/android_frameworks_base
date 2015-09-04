@@ -252,6 +252,13 @@ public class VisualizerView extends View implements Palette.PaletteAsyncListener
         }
     }
 
+    public void setOccluded(boolean occluded) {
+        if (mOccluded != occluded) {
+            mOccluded = occluded;
+            checkStateChanged();
+        }
+    }
+
     public void setBitmap(Bitmap bitmap) {
         if (mCurrentBitmap == bitmap) {
             return;
@@ -306,7 +313,8 @@ public class VisualizerView extends View implements Palette.PaletteAsyncListener
     }
 
     private void checkStateChanged() {
-        if (mVisible && mPlaying && !mDozing && !mPowerSaveMode && mVisualizerEnabled) {
+        if (mVisible && mPlaying && !mDozing && !mPowerSaveMode && mVisualizerEnabled
+                && !mOccluded) {
             if (!mDisplaying) {
                 mDisplaying = true;
                 AsyncTask.execute(mLinkVisualizer);

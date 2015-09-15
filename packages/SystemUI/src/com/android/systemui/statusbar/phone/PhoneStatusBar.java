@@ -2324,7 +2324,7 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
         }
 
         if (backdropBitmap == null && mMediaMetadata == null) {
-            backdropBitmap = wm.getKeyguardBitmap();
+	    backdropBitmap = mKeyguardWallpaper;
         }
 
         if (keyguardVisible) {
@@ -2594,9 +2594,6 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
 
     public void setQsExpanded(boolean expanded) {
         mStatusBarWindowManager.setQsExpanded(expanded);
-        if (mVisualizerEnabled && mState != StatusBarState.SHADE) {
-            mBackdrop.setQsExpanded(expanded);
-        }
     }
 
     public boolean isGoingToNotificationShade() {

@@ -1426,6 +1426,17 @@ public class NetworkControllerImpl extends BroadcastReceiver
             }
 
             @Override
+            public void onDataConnectionStateChanged(int state, int networkType) {
+                if (DEBUG) {
+                    Log.d(mTag, "onDataConnectionStateChanged: state=" + state
+                            + " type=" + networkType);
+                }
+                mDataState = state;
+                mDataNetType = networkType;
+                updateTelephony();
+            }
+
+            @Override
             public void onDataActivity(int direction) {
                 if (DEBUG) {
                     Log.d(mTag, "onDataActivity: direction=" + direction);

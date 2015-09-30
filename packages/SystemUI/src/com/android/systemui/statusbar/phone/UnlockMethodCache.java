@@ -140,8 +140,8 @@ public class UnlockMethodCache {
         }
 
         @Override
-        public void onFingerprintAttemptFailed(boolean error, int errorCode) {
-            update(!error);
+        public void onFingerprintAttemptFailed() {
+            update(true /* updateAlways */);
         }
 
         @Override
